@@ -3,26 +3,23 @@ import Card from "../Card/Card";
 import "./ProductGrid.css";
 
 const products = [
-  { id: 1, name: "Apples", price: 10, image: "./img/apple.png" },
-  { id: 2, name: "Headphones", price: 125, image: "./img/headphone.png" },
-  { id: 3, name: "Airpods", price: 300, image: "./img/airpod.png" },
-  { id: 4, name: "Tshirt", price: 15, image: "./img/tshirt.png" },
-  { id: 5, name: "Bananas", price: 7, image: "./img/banana.png" },
+  { id: 1, name: "Apples", price: 10, img: "./img/apple.png" },
+  { id: 2, name: "Headphones", price: 125, img: "./img/headphone.png" },
+  { id: 3, name: "Airpods", price: 300, img: "./img/airpod.png" },
+  { id: 4, name: "Tshirt", price: 15, img: "./img/tshirt.png" },
+  { id: 5, name: "Bananas", price: 7, img: "./img/banana.png" },
 ];
 
-const ProductGrid = () => {
+const ProductGrid = ({ onAddToCart }) => {
   const cards = products.map((product) => (
     <Card
       key={product.id}
-      image={product.image}
+      img={product.img}
       title={product.name}
       price={product.price}
-      onAddToCart={() => handleAddToCart(product)}
+      onAddToCart={() => onAddToCart(product)}
     />
   ));
-  const handleAddToCart = (product) => {
-    //TODO
-  };
 
   return <div className="product-grid">{cards}</div>;
 };
