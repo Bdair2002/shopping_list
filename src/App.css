@@ -1,0 +1,9 @@
+body {
+  background-color: var(--white);
+}
+.App {
+}
+.title {
+  color: var(--primary);
+  text-align: center;
+}
