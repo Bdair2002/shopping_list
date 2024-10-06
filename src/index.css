@@ -5,6 +5,10 @@
   padding: 0;
 }
 :root {
+  --primary: #c96868;
+  --secondary: #fadfa1;
+  --white: #fff4ea;
+  --blue: #7eacb5;
 }
 body {
   font-family: "Inter", sans-serif;
