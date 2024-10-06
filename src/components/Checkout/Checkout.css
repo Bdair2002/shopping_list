@@ -1,0 +1,54 @@
+.form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.checkout__title {
+  color: var(--blue);
+}
+.form-group {
+  position: relative;
+  width: 300px;
+  margin-bottom: 1rem;
+}
+.form-group input {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  padding: 1rem 0.5rem;
+  outline: none;
+  color: #333;
+  background: transparent;
+}
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 1rem 0.5rem;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-group input:is(:focus, :valid) + label {
+  transform: translateY(-50%);
+  top: 0;
+  background-color: var(--white);
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  left: 10px;
+}
+.form-group input:is(:focus, :valid) {
+  border: 2px solid #b00;
+  box-shadow: 1px 2px 2px var(--primary);
+}
+.submit-btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 700;
+}
