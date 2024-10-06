@@ -1,9 +1,19 @@
 import "./App.css";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import Cart from "./components/Cart/Cart";
-import { useState } from "react";
+import Checkout from "./components/Checkout/Checkout";
+import { useState, useEffect } from "react";
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const amount = cartItems.reduce(
+    (total, item) => total + item.product.price * item.count,
+    0
+  );
+  useEffect(() => {
+    setTotalAmount(amount);
+  }, [cartItems, amount]);
   const handleDecrement = (product) => {
     const updatedCartItems = cartItems.reduce((acc, item) => {
       if (item.product.id === product.id) {
@@ -19,26 +29,22 @@ function App() {
   };
 
   const handleIncrement = (product) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item.product.id === product.id
-          ? { ...item, count: item.count + 1 }
-          : item
-      )
+    const updatedCartItems = cartItems.map((item) =>
+      item.product.id === product.id ? { ...item, count: item.count + 1 } : item
     );
+    setCartItems(updatedCartItems);
   };
   const handleAddToCart = (product) => {
     const existingProduct = cartItems.find(
       (item) => item.product.id === product.id
     );
     if (existingProduct) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.product.id === product.id
-            ? { ...item, count: item.count + 1 }
-            : item
-        )
+      const updatedCartItems = cartItems.map((item) =>
+        item.product.id === product.id
+          ? { ...item, count: item.count + 1 }
+          : item
       );
+      setCartItems(updatedCartItems);
     } else {
       setCartItems([...cartItems, { product: product, count: 1 }]);
     }
@@ -55,7 +61,9 @@ function App() {
         onDecrement={handleDecrement}
         cartItems={cartItems}
         onRemoveFromCart={handleRemoveFromCart}
+        totalAmount={totalAmount}
       />
+      <Checkout totalAmount={totalAmount} />
     </div>
   );
 }

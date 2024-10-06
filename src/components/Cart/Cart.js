@@ -1,16 +1,15 @@
-import React from "react";
 import "./Cart.css";
-const Cart = ({ onIncrement, onDecrement, cartItems, onRemoveFromCart }) => {
-  const totalAmount = cartItems.reduce(
-    (total, item) => total + item.product.price * item.count,
-    0
-  );
-
+const Cart = ({
+  onIncrement,
+  onDecrement,
+  cartItems,
+  onRemoveFromCart,
+  totalAmount,
+}) => {
   return (
     <div className="cart">
       <div className="my_cart">
-        {" "}
-        <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+        <i className="fa-solid fa-cart-shopping fa-2xl"></i>
         <h2 className="cart__heading">My Cart</h2>
       </div>
       {cartItems.length === 0 ? (
